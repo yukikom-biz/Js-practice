@@ -77,13 +77,12 @@ function calcQueen() {
     // for (currentLocationRaw;currentLocationRaw<lengthArray;currentLocationRaw++){
     currentLocationRaw = 0 ;
         for (currentLocationColumn;currentLocationColumn<lengthArray;currentLocationColumn++) {
-            let tmpArray = tableLocationArrayPrimary.concat();
+            let tmpArray = tableLocationArrayPrimary.slice();
 
             // console.log("SET FIRST");
             let tableLocationArrayElementFirst = tmpArray[currentLocationRaw][currentLocationColumn];
             if ((tableLocationArrayElementFirst !== "HER") && (tableLocationArrayElementFirst !== "BAN"))
                 setBanLocation(tmpArray, currentLocationRaw, currentLocationColumn, lengthArray);
-
 
             // console.log("SEARCH");
             for (let pieceIndex = 1; pieceIndex <= pieceCount; pieceIndex++) {
@@ -93,6 +92,7 @@ function calcQueen() {
                         if ((tableLocationArrayElement !== "HER") && (tableLocationArrayElement !== "BAN")) {
                             setBanLocation(tmpArray, localIndexRow, localIndexColumn, lengthArray);
                             console.log(tmpArray);
+                            console.log(tableLocationArrayPrimary);
                             setCounterForDebug++;
                             console.log(setCounterForDebug);
                             if (pieceIndex == lengthArray) {
